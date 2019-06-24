@@ -1,0 +1,39 @@
+.ItemDetails {
+    width: 375px;
+    height: 75px;
+    border-bottom: solid 1px gray;
+    display: flex;
+    align-items: stretch;
+    /* justify-content: space-between; */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.Item:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+
+.ItemDetails img {
+    width: 50px;
+    height: 50px;
+    flex-grow: 1;
+}
+
+.ItemName {
+    flex-grow: 8;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.ItemPrice {
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+.Line {
+    width: 375px;
+    border: none;
+    height: 1px;
+    background-color: #333; /* Modern Browsers */
+}
