@@ -5,3 +5,8 @@
     border-radius: 5px;
     margin: 20px;
 }
+
+.ItemDetails img {
+    width: 300px;
+    height: 300px;
+}

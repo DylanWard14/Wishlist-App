@@ -7,7 +7,7 @@ class Wishlist extends Component {
         let items = [];
         for (var i = 0; i < 10; i++)
         {
-            items.push(<WishListItem key={i} itemName={'item' + i} price="10.00"/>)
+            items.push(<WishListItem key={i} itemName={'item' + i} price="10.00" clicked={this.props.clicked}/>)
         }
         if (!items)
         {
