@@ -1,5 +1,5 @@
 import React from 'react';
-import chair from '../../../assets/images/ChairTest.jpg'
+import chair from '../../../../assets/images/ChairTest.jpg';
 import classes from './WishListItem.css';
 
 const wishListItem = (props) => {

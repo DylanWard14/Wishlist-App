@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './ItemDetails.css'
-import chair from '../../assets/images/ChairTest.jpg'
+import chair from '../../../assets/images/ChairTest.jpg'
 
 const itemDetails = (props) => {
     let details = <p>Please selected an Item!</p>;
