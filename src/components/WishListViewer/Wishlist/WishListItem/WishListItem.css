@@ -1,7 +1,8 @@
 .ItemDetails {
-    width: 375px;
+    /* width: 375px; */
+    width:100%;
     height: 75px;
-    border-bottom: solid 1px gray;
+    border-bottom: solid 1px #520177;
     display: flex;
     align-items: stretch;
     /* justify-content: space-between; */
@@ -9,9 +10,12 @@
     box-sizing: border-box;
 }
 
-.Item:hover {
-    background-color: gray;
+.ItemDetails:hover {
+    /* background-color: gray; */
     cursor: pointer;
+    /* border-bottom: solid 1px #d100ed; */
+    color: #520177;
+    font-weight: bold;
 }
 
 .ItemDetails img {

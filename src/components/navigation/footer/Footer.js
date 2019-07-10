@@ -1,9 +1,10 @@
 import React from 'react';
+import classes from './Footer.css'
 
 const footer = () => {
     return (
-        <div>
-            This is the footer
+        <div className={classes.Footer}>
+            © Dylan Ward 2019
         </div>
     );
 }

@@ -1,7 +1,7 @@
 .Wishlist {
     width: 400px;
     height: 500px;
-    border: 1px gray solid;
+    border: 1px #520177 solid;
     border-radius: 5px;
     margin: 20px;
     overflow: auto;
