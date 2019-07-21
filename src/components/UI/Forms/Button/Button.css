@@ -8,6 +8,10 @@
     margin: 10px
 }
 
+.Success:hover, .Cancel:hover {
+    cursor: pointer;
+}
+
 .Cancel {
     background-color: lightcoral;
     border: 1px solid darkred;

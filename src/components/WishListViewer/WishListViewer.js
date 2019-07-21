@@ -64,13 +64,27 @@ export class WishListViewer extends Component {
         this.props.history.push('/');
       }
 
+      OnDeleteItemHandle = (e) => {
+        e.preventDefault();
+        console.log('deleting');
+        let updatedWishlist = this.state.wishlist.filter((item) => {
+          // Currently filtering by name as when database is set up each item will have a unique id value
+          if (item.name != this.state.selectedItem.name) {
+            return item
+          }
+        })
+        this.setState((prevState, props) => ({
+          wishlist: [...updatedWishlist]
+        }))
+      }
+
     render () {
       const routes = (
         <div className={classes.Content}>
           <Route path="/" render={() => <WishList wishlist={this.state.wishlist} clicked={this.OnClickItemHandler}/> } />
           <Switch>
-            <Route path="/" exact render={() => <ItemDetails selectedItem={this.state.selectedItem}/>} />
-            <Route path="/item" render={() => <ItemDetails selectedItem={this.state.selectedItem}/>} />
+            <Route path="/" exact render={() => <ItemDetails selectedItem={this.state.selectedItem} delete={this.OnDeleteItemHandle}/>} />
+            <Route path="/item" render={() => <ItemDetails selectedItem={this.state.selectedItem} delete={this.OnDeleteItemHandle}/>} />
             <Route path="/addItem" render={() => <AddItem add={this.OnAddItemHandler} cancel={this.OnCancelAddItemHandler} error={this.state.errorAddingItem}/>} />
           </Switch>
         </div>
