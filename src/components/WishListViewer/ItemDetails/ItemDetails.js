@@ -12,7 +12,7 @@ export class ItemDetails extends Component {
             details = (
             <div>
                 <h2>{this.props.selectedItem.name}</h2>
-                <img src={chair} alt="Cannot find image"/>
+                <img src={chair} alt=""/>
                 <p><strong>${this.props.selectedItem.price}</strong></p>
             </div>
             )

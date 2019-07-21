@@ -1,7 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import classes from './Toolbar.css'
-import ItemDetails from '../../WishListViewer/ItemDetails/ItemDetails';
 
 const toolbar = () => {
     return (

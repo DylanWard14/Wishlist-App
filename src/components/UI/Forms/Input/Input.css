@@ -1,0 +1,13 @@
+.InputElement {
+    padding: 15px;
+    height: 20px;
+}
+
+.Label {
+    padding: 10px;
+}
+
+.Input {
+    height: 100%;
+    width: 200px;
+}
