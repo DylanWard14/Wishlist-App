@@ -1,23 +1,22 @@
+.Button {
+    padding: 10px;
+    width: 100px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.Button:hover {
+    cursor: pointer;
+}
+
 .Success {
     background-color: lightgreen;
     border: 1px solid green;
     color: darkgreen;
-    padding: 10px;
-    width: 100px;
-    font-weight: bold;
-    margin: 10px
-}
-
-.Success:hover, .Cancel:hover {
-    cursor: pointer;
 }
 
 .Cancel {
     background-color: lightcoral;
     border: 1px solid darkred;
     color: darkred;
-    padding: 10px;
-    width: 100px;
-    font-weight: bold;
-    margin: 10px;
 }

@@ -37,7 +37,19 @@ export class WishListViewer extends Component {
       }
     
       OnClickItemHandler = (name, price, image, URL) => {
+        let updatedWishlist = this.state.wishlist.map((wish) => {
+          if (wish.name === name)
+          {
+            return {...wish, selected: true}
+          }
+          else
+          {
+            return {...wish, selected: false}
+          }
+        })
+
         this.setState({
+          wishlist: [...updatedWishlist],
           selectedItem: {
             name,
             price,
@@ -45,6 +57,7 @@ export class WishListViewer extends Component {
             URL
           }
         })
+
         this.props.history.push('/item')
       }
 

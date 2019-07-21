@@ -11,11 +11,15 @@
 }
 
 .ItemDetails:hover {
-    /* background-color: gray; */
+    background-color: #f1d3ff;
     cursor: pointer;
     /* border-bottom: solid 1px #d100ed; */
     color: #520177;
     font-weight: bold;
+}
+
+.ItemDetails:active {
+    background-color: #e4afff;
 }
 
 .ItemDetails img {
@@ -41,6 +45,14 @@
     border: none;
     height: 1px;
     background-color: #333; /* Modern Browsers */
+}
+
+.Selected {
+    background-color: #f1d3ff;
+    cursor: pointer;
+    /* border-bottom: solid 1px #d100ed; */
+    color: #520177;
+    font-weight: bold;
 }
 
 .Purchased {

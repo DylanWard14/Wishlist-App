@@ -2,20 +2,25 @@ import React from 'react';
 import classes from './WishListItem.css';
 
 const wishListItem = (props) => {
-    let divClasses = classes.Item;
-    if (props.purchased) {
-        divClasses = [classes.Item, classes.Purchased].join(' ');
+    let divClasses = [classes.Item];
+    if (props.wish.purchased) {
+        divClasses.push(classes.purchased)
+    }
+    if (props.wish.selected) {
+        divClasses.push(classes.Selected)
     }
     return (
         <React.Fragment>
-        <div className={divClasses} onClick={() => props.clicked(props.itemName, props.price, props.image, props.URL)}>
+        <div 
+            className={divClasses.join(' ')} 
+            onClick={() => props.clicked(props.wish.name, props.wish.price, props.wish.image, props.wish.URL)}
+        >
             <div className={classes.ItemDetails}>
-                <img src={props.image} alt="No images"/>
-                <p className={classes.ItemName}>{props.itemName}</p>
-                <p className={classes.ItemPrice}>${props.price}</p>
+                <img src={props.wish.image} alt="No images"/>
+                <p className={classes.ItemName}>{props.wish.name}</p>
+                <p className={classes.ItemPrice}>${props.wish.price}</p>
                 
             </div>
-            {/* <hr className={classes.Line}/> */}
         </div>
         </React.Fragment>
     )

@@ -5,17 +5,13 @@ import classes from './Wishlist.css';
 export class Wishlist extends Component {
     render () {
         let items = [];
-        for (let wish in this.props.wishlist)
+        for (let thisWish in this.props.wishlist)
         {
             const wishlist = this.props.wishlist;
             items.push(
             <WishListItem 
-                key={wish} 
-                itemName={wishlist[wish].name} 
-                price={wishlist[wish].price} 
-                image={wishlist[wish].image} 
-                URL={wishlist[wish].URL} 
-                purchased={wishlist[wish].purchased} 
+                key={thisWish} 
+                wish={{...wishlist[thisWish]}}
                 clicked={this.props.clicked}
             />)
         }
