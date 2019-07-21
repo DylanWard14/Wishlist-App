@@ -18,7 +18,7 @@ export class ItemDetails extends Component {
                 <p>Price: <strong>${this.props.selectedItem.price}</strong></p>
                 <p>Location: <a href={this.props.selectedItem.URL}>{URL}</a></p>
                 <Button label="Delete" type="Cancel" clicked={this.props.delete}/>
-                <Button label="Purchased" type="Success"/>
+                <Button label="Purchased" type="Success" clicked={this.props.purchase}/>
             </div>
             )
         }

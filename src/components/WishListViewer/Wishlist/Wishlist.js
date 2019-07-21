@@ -8,7 +8,16 @@ export class Wishlist extends Component {
         for (let wish in this.props.wishlist)
         {
             const wishlist = this.props.wishlist;
-            items.push(<WishListItem key={wish} itemName={wishlist[wish].name} price={wishlist[wish].price} image={wishlist[wish].image} URL={wishlist[wish].URL} clicked={this.props.clicked}/>)
+            items.push(
+            <WishListItem 
+                key={wish} 
+                itemName={wishlist[wish].name} 
+                price={wishlist[wish].price} 
+                image={wishlist[wish].image} 
+                URL={wishlist[wish].URL} 
+                purchased={wishlist[wish].purchased} 
+                clicked={this.props.clicked}
+            />)
         }
 
         if (items.length === 0)
