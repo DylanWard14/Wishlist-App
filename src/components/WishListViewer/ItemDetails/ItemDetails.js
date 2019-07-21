@@ -1,25 +1,28 @@
-import React from 'react';
+import React, {Component} from 'react';
 import classes from './ItemDetails.css'
 import chair from '../../../assets/images/ChairTest.jpg'
 
-const itemDetails = (props) => {
-    let details = <p>Please selected an Item!</p>;
+export class ItemDetails extends Component {
 
-    if (props.selectedItem.name !== '')
-    {
-        details = (
-        <div>
-            <h2>{props.selectedItem.name}</h2>
-            <img src={chair} alt="Cannot find image"/>
-            <p><strong>${props.selectedItem.price}</strong></p>
-        </div>
-        )
+    render () {
+        let details = <p>Please selected an Item!</p>;
+
+        if (this.props.selectedItem.name !== '')
+        {
+            details = (
+            <div>
+                <h2>{this.props.selectedItem.name}</h2>
+                <img src={chair} alt="Cannot find image"/>
+                <p><strong>${this.props.selectedItem.price}</strong></p>
+            </div>
+            )
+        }
+        return (
+            <div className={classes.ItemDetails}>
+                {details}
+            </div>
+        );
     }
-    return (
-        <div className={classes.ItemDetails}>
-            {details}
-        </div>
-    );
 }
 
-export default itemDetails;
+export default ItemDetails;

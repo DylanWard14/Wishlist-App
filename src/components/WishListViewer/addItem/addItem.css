@@ -1,0 +1,12 @@
+.AddItem {
+    height: 500px;
+    width: 400px;
+    border: 1px #520177 solid;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.AddItem img {
+    width: 300px;
+    height: 300px;
+}

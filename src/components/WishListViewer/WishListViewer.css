@@ -3,3 +3,7 @@
     display: flex;
     justify-content: center;
 }
+
+.WishList {
+    background-color: red;
+}

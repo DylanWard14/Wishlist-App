@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+import {Route, Switch, withRouter, Redirect} from 'react-router-dom';
 import WishList from './Wishlist/Wishlist';
 import ItemDetails from './ItemDetails/ItemDetails';
 import classes from './WishListViewer.css';
+import AddItem from './addItem/addItem';
 
-class WishListViewer extends Component {
+export class WishListViewer extends Component {
     state = {
         selectedItem: {
           name: '',
@@ -21,15 +23,29 @@ class WishListViewer extends Component {
             image
           }
         })
+        this.props.history.push('/item')
       }
+
     render () {
+      const routes = (
+        <div className={classes.Content}>
+          <Route path="/" render={() => <WishList clicked={this.OnClickItemHandler}/> } />
+          <Switch>
+            <Route path="/" exact render={() => <ItemDetails selectedItem={this.state.selectedItem}/>} />
+            <Route path="/item" render={() => <ItemDetails selectedItem={this.state.selectedItem}/>} />
+            <Route path="/addItem" render={() => <AddItem/>} />
+          </Switch>
+        </div>
+      )
+
         return (
-            <div className={classes.Content}>
-                <WishList clicked={this.OnClickItemHandler}/>
-                <ItemDetails selectedItem={this.state.selectedItem}/>
+            <div>
+              {routes}
+                {/* <WishList clicked={this.OnClickItemHandler}/>
+                <ItemDetails selectedItem={this.state.selectedItem}/> */}
             </div>
         );
     }
 }
 
-export default WishListViewer;
+export default withRouter(WishListViewer);

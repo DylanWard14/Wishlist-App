@@ -1,5 +1,7 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import classes from './Toolbar.css'
+import ItemDetails from '../../WishListViewer/ItemDetails/ItemDetails';
 
 const toolbar = () => {
     return (
@@ -7,10 +9,10 @@ const toolbar = () => {
             <h1>Wishify</h1>
             <nav>
                 <div className={classes.Link}>
-                    <a>Home</a>
+                    <NavLink to="/" >Home</NavLink>
                 </div>
                 <div className={classes.Link}>
-                    <a>Wish list</a>
+                    <NavLink to="/addItem">Add Item</NavLink>
                 </div>
             </nav>
 
