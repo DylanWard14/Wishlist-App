@@ -33,6 +33,26 @@ class addItem extends Component {
           }))
     }
 
+    ItemURLChangeHandler = (e) => {
+        const url = e.target.value;
+        this.setState((prevState, props) => ({
+            newItem: {
+                ...prevState.newItem,
+                URL: url
+            }
+          }))
+    }
+
+    ItemImageChangeHandler = (e) => {
+        const image = e.target.value;
+        this.setState((prevState, props) => ({
+            newItem: {
+                ...prevState.newItem,
+                image: image
+            }
+          }))
+    }
+
     render () {
         let error = (
             <div className={classes.Error}>
@@ -48,9 +68,16 @@ class addItem extends Component {
                 <form>
                     <Input label="Item Name: " inputType="text" name="ItemName" placeholder="Item Name..." changeHandler={this.ItemNameChangeHandler} required={true}/>
                     <Input label="Item Price: " inputType="number" name="ItemPrice" placeholder="Item Price..." changeHandler={this.ItemPriceChangeHandler} required={true}/>
-                    <Input label="Item URL: " inputType="text" name="ItemURL" placeholder="Item URL..."/>
+                    <Input label="Item URL: " inputType="text" name="ItemURL" placeholder="Item URL..." changeHandler={this.ItemURLChangeHandler}/>
+                    <Input label="Image URL: " inputType="text" name="ImageURL" placeholder="Image URL..." changeHandler={this.ItemImageChangeHandler}/>
                     <div className={classes.FormControl}>
-                        <Button label="Add" type="Success" clicked={(e) => this.props.add(e, this.state.newItem.name, this.state.newItem.price)}/>
+                        <Button 
+                            label="Add" 
+                            type="Success" 
+                            clicked={
+                                (e) => this.props.add(e, this.state.newItem.name, this.state.newItem.price, this.state.newItem.URL, this.state.newItem.image)
+                            }
+                        />
                         <Button label="Cancel" type="Cancel" clicked={this.props.cancel}/>
                     </div>
                     {error}

@@ -11,48 +11,53 @@ export class WishListViewer extends Component {
         {
             name: 'Chair',
             price: '10.00',
-            image: ''
+            URL: 'https://www.kmart.com.au/product/occasional-chair/1171316',
+            image: 'https://www.kmart.com.au/wcsstore/Kmart/images/ncatalog/f/9/42428459-1-f.jpg'
         },
         {
             name: 'Table',
             price: '100.00',
-            image: ''
+            URL: 'https://www.kmart.com.au/product/black-stone-side-table/2313308',
+            image: 'https://www.kmart.com.au/wcsstore/Kmart/images/ncatalog/f/6/42698586-1-f.jpg'
         },
         {
-            name: 'mouse',
+            name: 'Mouse',
             price: '99.00',
-            image: ''
+            URL: 'https://www.jbhifi.com.au/computers-tablets/accessories/logitech/logitech-mx-master-2s-wireless-mouse-graphite/453489/',
+            image: 'https://www.jbhifi.com.au/FileLibrary/ProductResources/Images/219749-L-LO.jpg'
         },
       ],
         selectedItem: {
           name: '',
           price: '',
+          URL: '',
           image: ''
         },
         errorAddingItem: false
       }
     
-      OnClickItemHandler = (name, price, image) => {
-        console.log(image);
+      OnClickItemHandler = (name, price, image, URL) => {
         this.setState({
           selectedItem: {
             name,
             price,
-            image
+            image, 
+            URL
           }
         })
         this.props.history.push('/item')
       }
 
-      OnAddItemHandler = (e, name, price) => {
+      OnAddItemHandler = (e, name, price, URL, image) => {
         e.preventDefault();
-        if(name && price) {
+        if(name && price && URL && image) {
           this.setState((prevState, props) => ({
-            wishlist: [...prevState.wishlist, {name, price, image: ''}],
+            wishlist: [...prevState.wishlist, {name, price, URL, image}],
             errorAddingItem: false
           }))
         }
         else {
+          console.log(name,price,URL,image)
           this.setState({
             errorAddingItem: true
           })
@@ -69,9 +74,7 @@ export class WishListViewer extends Component {
         console.log('deleting');
         let updatedWishlist = this.state.wishlist.filter((item) => {
           // Currently filtering by name as when database is set up each item will have a unique id value
-          if (item.name != this.state.selectedItem.name) {
-            return item
-          }
+          return item.name !== this.state.selectedItem.name
         })
         this.setState((prevState, props) => ({
           wishlist: [...updatedWishlist]
