@@ -4,28 +4,11 @@ import WishList from './Wishlist/Wishlist';
 import ItemDetails from './ItemDetails/ItemDetails';
 import classes from './WishListViewer.css';
 import AddItem from './addItem/addItem';
+import axios from 'axios';
 
 export class WishListViewer extends Component {
     state = {
       wishlist: [
-        {
-            name: 'Chair',
-            price: '10.00',
-            URL: 'https://www.kmart.com.au/product/occasional-chair/1171316',
-            image: 'https://www.kmart.com.au/wcsstore/Kmart/images/ncatalog/f/9/42428459-1-f.jpg'
-        },
-        {
-            name: 'Table',
-            price: '100.00',
-            URL: 'https://www.kmart.com.au/product/black-stone-side-table/2313308',
-            image: 'https://www.kmart.com.au/wcsstore/Kmart/images/ncatalog/f/6/42698586-1-f.jpg'
-        },
-        {
-            name: 'Mouse',
-            price: '99.00',
-            URL: 'https://www.jbhifi.com.au/computers-tablets/accessories/logitech/logitech-mx-master-2s-wireless-mouse-graphite/453489/',
-            image: 'https://www.jbhifi.com.au/FileLibrary/ProductResources/Images/219749-L-LO.jpg'
-        },
       ],
         selectedItem: {
           name: '',
@@ -34,6 +17,25 @@ export class WishListViewer extends Component {
           image: ''
         },
         errorAddingItem: false
+      }
+
+      componentDidMount() {
+        axios.get('https://wishify-bd917.firebaseio.com/Wishes.json')
+          .then((response) => {
+            const wishes = [];
+            for (let key in response.data) {
+              wishes.push({
+                ...response.data[key],
+                id: key
+              })
+            }
+            this.setState({
+              wishlist: [...wishes]
+            })
+          })
+          .catch((error) => {
+            console.log(error);
+          })
       }
     
       OnClickItemHandler = (name, price, image, URL) => {

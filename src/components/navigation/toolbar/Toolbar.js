@@ -7,15 +7,13 @@ const toolbar = () => {
         <div className={classes.Toolbar}>
             <h1>Wishify</h1>
             <nav>
-                <div className={classes.Link}>
-                    <NavLink to="/" >Home</NavLink>
-                </div>
-                <div className={classes.Link}>
-                    <NavLink to="/addItem">Add Item</NavLink>
-                </div>
+                <NavLink to="/"  className={classes.Link}>
+                    Home
+                </NavLink>
+                <NavLink to="/addItem" className={classes.Link}>
+                    Add Item
+                </NavLink>
             </nav>
-
-            {/* <div className={classes.outerDiv}><div class={classes.innerDiv}></div></div> */}
         </div>
     );
 }
