@@ -66,6 +66,17 @@ export class WishListViewer extends Component {
       OnAddItemHandler = (e, name, price, URL, image) => {
         e.preventDefault();
         if(name && price && URL && image) {
+          // Upload information to the server.
+          axios.post('https://wishify-bd917.firebaseio.com/Wishes.json', {
+            name, price,URL, image
+          })
+          .then((response) => {
+            console.log(response)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+
           this.setState((prevState, props) => ({
             wishlist: [...prevState.wishlist, {name, price, URL, image}],
             errorAddingItem: false
