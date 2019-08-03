@@ -4,15 +4,27 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import {createStore, combineReducers} from "redux";
+import {createStore, combineReducers, applyMiddleware, compose} from "redux";
 import {Provider} from "react-redux";
+import thunk from 'redux-thunk';
 
 import {BrowserRouter} from 'react-router-dom';
 import {mathReducer} from './store/reducers/math';
 import {userReducer} from './store/reducers/user';
+import {wishListItemReducer} from './store/reducers/wishlistItem';
 
 
-const store = createStore(combineReducers({mathReducer, userReducer}));
+const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+
+const rootReducer = combineReducers({
+    mathReducer, 
+    userReducer,
+    wishListItemReducer
+})
+
+const store = createStore(rootReducer, composeEnhancers(
+    applyMiddleware(thunk)
+));
 
 const app = (
     <Provider store={store}>

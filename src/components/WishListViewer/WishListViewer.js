@@ -6,6 +6,9 @@ import classes from './WishListViewer.css';
 import AddItem from './addItem/addItem';
 import axios from 'axios';
 
+import {connect} from 'react-redux';
+import * as wishlistActions from '../../store/actions/wishListItem';
+
 export class WishListViewer extends Component {
     state = {
       wishlist: [
@@ -20,26 +23,27 @@ export class WishListViewer extends Component {
       }
 
       componentDidMount() {
-        axios.get('https://wishify-bd917.firebaseio.com/Wishes.json')
-          .then((response) => {
-            const wishes = [];
-            for (let key in response.data) {
-              wishes.push({
-                ...response.data[key],
-                id: key
-              })
-            }
-            this.setState({
-              wishlist: [...wishes]
-            })
-          })
-          .catch((error) => {
-            console.log(error);
-          })
+        // axios.get('https://wishify-bd917.firebaseio.com/Wishes.json')
+        //   .then((response) => {
+        //     const wishes = [];
+        //     for (let key in response.data) {
+        //       wishes.push({
+        //         ...response.data[key],
+        //         id: key
+        //       })
+        //     }
+        //     this.setState({
+        //       wishlist: [...wishes]
+        //     })
+        //   })
+        //   .catch((error) => {
+        //     console.log(error);
+        //   })
+        this.props.onInitWishlist();
       }
     
       OnClickItemHandler = (name, price, image, URL) => {
-        let updatedWishlist = this.state.wishlist.map((wish) => {
+        let updatedWishlist = this.props.wishlist.map((wish) => {
           if (wish.name === name)
           {
             return {...wish, selected: true}
@@ -122,7 +126,7 @@ export class WishListViewer extends Component {
     render () {
       const routes = (
         <div className={classes.Content}>
-          <Route path="/" render={() => <WishList wishlist={this.state.wishlist} clicked={this.OnClickItemHandler}/> } />
+          <Route path="/" render={() => <WishList wishlist={this.props.wishlist} clicked={(item) => this.props.onSelectItem(item)}/> } />
           <Switch>
             <Route path="/" exact render={() => <ItemDetails selectedItem={this.state.selectedItem} delete={this.OnDeleteItemHandle} purchase={this.OnPurchaseHandler}/>} />
             <Route path="/item" render={() => <ItemDetails selectedItem={this.state.selectedItem} delete={this.OnDeleteItemHandler} purchase={this.OnPurchaseHandler}/>} />
@@ -135,4 +139,16 @@ export class WishListViewer extends Component {
     }
 }
 
-export default withRouter(WishListViewer);
+const mapStateToProps = (state) => {
+  return {
+    wishlist: state.wishListItemReducer.wishlist
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onInitWishlist: () => dispatch(wishlistActions.initWishlist())
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(WishListViewer));

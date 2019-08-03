@@ -1,19 +1,21 @@
 import React from 'react';
 import classes from './WishListItem.css';
+import {connect} from 'react-redux';
+import * as wishlistActions from '../../../../store/actions/wishListItem';
 
 const wishListItem = (props) => {
     let divClasses = [];
     if (props.wish.purchased) {
         divClasses.push(classes.Purchased)
     }
-    if (props.wish.selected) {
+    if (props.wish === props.selectedItem) {
         divClasses.push(classes.Selected)
     }
     return (
         <React.Fragment>
         <div 
             className={divClasses.join(' ')} 
-            onClick={() => props.clicked(props.wish.name, props.wish.price, props.wish.image, props.wish.URL)}
+            onClick={(item) => props.onSelectItem(props.wish)}
         >
             <div className={classes.ItemDetails}>
                 <img src={props.wish.image} alt="No images"/>
@@ -25,4 +27,16 @@ const wishListItem = (props) => {
     )
 }
 
-export default wishListItem;
+const mapStateToProps = (state) => {
+    return {
+        selectedItem: state.wishListItemReducer.selectedItem
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onSelectItem: (item) => dispatch(wishlistActions.selectItem(item))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(wishListItem);
