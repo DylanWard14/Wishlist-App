@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
 import classes from './ItemDetails.css'
 import Button from '../../UI/Forms/Button/Button';
+import {connect} from 'react-redux';
 
 export class ItemDetails extends Component {
 
     render () {
         let details = <p>Please selected an Item!</p>;
-        let URL = this.props.selectedItem.URL;
-        URL = URL.split('.')[1];
 
-        if (this.props.selectedItem.name !== '')
+        if (this.props.selectedItem != null)
         {
+            let URL = this.props.selectedItem.URL;
+            URL = URL.split('.')[1];
             details = (
             <div>
                 <h2>{this.props.selectedItem.name}</h2>
@@ -30,4 +31,10 @@ export class ItemDetails extends Component {
     }
 }
 
-export default ItemDetails;
+const mapStateToProps = (state) => {
+    return {
+        selectedItem: state.wishListItemReducer.selectedItem
+    }
+}
+
+export default connect(mapStateToProps)(ItemDetails);

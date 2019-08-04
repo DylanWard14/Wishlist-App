@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     wishlist: [],
-    selectedItem: {}
+    selectedItem: null
 }
 
 export const wishListItemReducer = (state = initialState, action) => {
