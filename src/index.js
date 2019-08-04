@@ -8,10 +8,12 @@ import {createStore, combineReducers, applyMiddleware, compose} from "redux";
 import {Provider} from "react-redux";
 import thunk from 'redux-thunk';
 
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, Router} from 'react-router-dom';
 import {mathReducer} from './store/reducers/math';
 import {userReducer} from './store/reducers/user';
 import {wishListItemReducer} from './store/reducers/wishlistItem';
+
+import history from './store/history';
 
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
@@ -28,9 +30,9 @@ const store = createStore(rootReducer, composeEnhancers(
 
 const app = (
     <Provider store={store}>
-        <BrowserRouter>
+        <Router history={history}>
             <App />
-        </BrowserRouter>
+        </Router>
     </Provider>
 )
 

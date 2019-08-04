@@ -23,22 +23,6 @@ export class WishListViewer extends Component {
       }
 
       componentDidMount() {
-        // axios.get('https://wishify-bd917.firebaseio.com/Wishes.json')
-        //   .then((response) => {
-        //     const wishes = [];
-        //     for (let key in response.data) {
-        //       wishes.push({
-        //         ...response.data[key],
-        //         id: key
-        //       })
-        //     }
-        //     this.setState({
-        //       wishlist: [...wishes]
-        //     })
-        //   })
-        //   .catch((error) => {
-        //     console.log(error);
-        //   })
         this.props.onInitWishlist();
       }
     

@@ -35,7 +35,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSelectItem: (item) => dispatch(wishlistActions.selectItem(item))
+        onSelectItem: (item) => {
+            dispatch(wishlistActions.selectItem(item))
+        }
     }
 }
 

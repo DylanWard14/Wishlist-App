@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
+import history from '../history';
 
 const initialState = {
     wishlist: [],
@@ -21,6 +22,7 @@ export const wishListItemReducer = (state = initialState, action) => {
             }
         case actionTypes.SELECT_ITEM:
             console.log(action.item)
+            history.push('/');
             return {
                 ...state,
                 selectedItem: action.item
